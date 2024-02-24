@@ -1,21 +1,33 @@
 using System;
 
-class Program {
-  public static void Main (string[] args) {
-    string Wrd;
-    string PrevWrd = "";
-    do
+class Program
+{
+    static void Main()
     {
-      Console.WriteLine("Enter something: ");
-      Wrd = Console.ReadLine();
-      if (Wrd == "exit" || Wrd == "Exit") 
-      break;
+        int sum = 0;
+        string Wrd = "";
 
-      PrevWrd = PrevWrd + " " + Wrd;
-      Console.WriteLine(PrevWrd.Trim());
-      } 
-      while (Wrd != "exit" && Wrd != "Exit");
-    Console.WriteLine(" ");
-    Console.WriteLine("You have exited the program");
-  }
+        while (true)
+        {
+            Console.Write("Enter something: ");
+            string userInput = Console.ReadLine();
+
+            if (userInput.ToLower() == "exit")
+            {
+                Console.WriteLine("Closing Program...");
+                break;
+            }
+
+            if (int.TryParse(userInput, out int number))
+            {
+                sum += number;
+                Console.WriteLine($"Adding {number} to {sum} = {sum}");
+            }
+            else
+            {
+                Wrd += userInput;
+                Console.WriteLine($"Current Message is: {Wrd}");
+            }
+        }
+    }
 }
